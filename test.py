@@ -19,6 +19,7 @@ Y_COLUMN = "sold"
 # check that the model was trained
 if not path.isfile("model.txt"):
     print("ERROR: No save-data found. Please train the model first by running \"main.py\".")
+    exit(0)
 
 # get the parameters
 with open("model.txt", "r") as f:
