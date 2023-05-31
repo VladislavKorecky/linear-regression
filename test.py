@@ -34,6 +34,16 @@ with open(CSV_PATH, "r") as f:
 x_values = [point[0] for point in dataset]
 y_values = [point[1] for point in dataset]
 
+# calculate R-squared
+dataset_mean = sum(y_values) / len(y_values)
+variance = sum([pow(dataset_mean - y, 2) for y in y_values]) / len(y_values)
+mse = sum([pow(a * x + b - y, 2) for x, y in zip(x_values, y_values)]) / len(y_values)
+r_squared = (variance - mse) / variance
+
+print(f"R²: {r_squared}")
+print(f"R² as a percentage: {r_squared * 100}%")
+input("Press ENTER to continue")
+
 # figure out the minimum and maximum input value
 minimum_x = min(x_values)
 maximum_x = max(x_values)
